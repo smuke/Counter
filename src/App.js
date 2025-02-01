@@ -9,19 +9,17 @@ export default function App() {
   useEffect(() => {
     let it;
 
-    if (isRunning) {
-      it = setInterval(() => {
-        setTime((prevTime) => {
-          if (prevTime === 12) {
-            return 0;
-          }
+    if (!isRunning) return () => clearInterval(it);
 
-          return prevTime + 1;
-        });
-      }, 1000);
-    } else {
-      clearInterval(it);
-    }
+    it = setInterval(() => {
+      setTime((prevTime) => {
+        if (prevTime === 12) {
+          return 0;
+        }
+
+        return prevTime + 1;
+      });
+    }, 1000);
 
     return () => clearInterval(it);
   }, [isRunning]);
