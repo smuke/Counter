@@ -13,9 +13,7 @@ export default function App() {
 
     it = setInterval(() => {
       setTime((prevTime) => {
-        if (prevTime === 12) {
-          return 0;
-        }
+        if (prevTime === 12) return 0;
 
         return prevTime + 1;
       });
